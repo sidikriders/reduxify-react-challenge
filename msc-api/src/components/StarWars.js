@@ -46,6 +46,7 @@ const StarWars = (props) => {
           <p className="subTitle is-3">Birthdate: {props.starWars.birth_year}</p>
           <p className="subTitle is-3">Height: {props.starWars.height}</p>
           <p className="subTitle is-3">Weight: {props.starWars.mass} Kg</p>
+          <p className="subTitle is-3">Picture: <a href="https://www.google.com/search?q=props.starWars.name&safe=off&hl=en&as_st=y&tbm=isch" target="_blank">{props.starWars.name}</a></p>
           <p className="subTitle is-3">more info: <a href={props.starWars.url} target="_blank">{props.starWars.url}</a></p>
         </div>
       </div>
