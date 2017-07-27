@@ -47,7 +47,7 @@ const newPasMan = (props) => {
 
 let mapStateToProps = (state) => {
   return {
-    Passwords: state.getPassword
+    editPasswords: state.getPassword
   }
 }
 

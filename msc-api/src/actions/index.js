@@ -58,3 +58,20 @@ export const deletePasswordGo = (id) => {
     })
   }
 }
+
+export const validatePassword = (val) => {
+}
+
+export const searchPassword = (str) => {
+  if (str === "") {
+    return {
+      type: "GET_PASSWORD_INITIATE",
+      payload: Axios.get('http://localhost:3000/password')
+    }
+  } else {
+    return {
+      type: "GET_PASSWORD_INITIATE",
+      payload: Axios.get('http://localhost:3000/password?url='+str)
+    }
+  }
+}

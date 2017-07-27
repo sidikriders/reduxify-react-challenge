@@ -5,7 +5,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
 // import logo from '../logo.svg'
-import { getPasswordInitiate, deletePasswordGo } from '../actions'
+import { getPasswordInitiate, deletePasswordGo, searchPassword } from '../actions'
 
 const PasMan = (props) => {
   if (props.Passwords === "") {
@@ -24,7 +24,7 @@ const PasMan = (props) => {
               <Link to="/new-password"><p className="button is-success">New Password</p></Link>
             </div>
             <div className="column" style={{textAlign: "right"}}>
-              <input className="input" type="text" placeholder="Search..." />
+              <input className="input" type="text" placeholder="Search..." onChange={(e) => props.searchPassword(e.target.value)} />
             </div>
           </div>
           <table className="table" style={{marginTop: "10px"}}>
@@ -90,6 +90,9 @@ let mapDispatchToProps = (dispatch) => {
     getInitiate: () => dispatch(getPasswordInitiate()),
     deletePassword: (id) => {
       submit(() => dispatch(deletePasswordGo(id)))
+    },
+    searchPassword: (e) => {
+      dispatch(searchPassword(e));
     }
   }
 }
