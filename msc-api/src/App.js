@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Bulma from 'bulma/css/bulma.css';
+import 'bulma/css/bulma.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import store from './store/store'
 import { Provider } from 'react-redux'
@@ -10,6 +10,8 @@ import SideBar from './components/SideBar'
 import Home from './components/Home'
 import StarWars from './components/StarWars'
 import RandomCat from './components/RandomCat'
+import PasswordManager from './components/PasswordManager'
+import newPassword from './components/newPassword'
 
 class App extends Component {
   render() {
@@ -37,6 +39,8 @@ class App extends Component {
                 <Route exact path="/" component={Home}/>
                 <Route path="/star-wars" component={StarWars}/>
                 <Route path="/random-cat" component={RandomCat}/>
+                <Route path="/password-manager" component={PasswordManager}/>
+                <Route path="/new-password" component={newPassword}/>
               </div>
             </div>
           </div>

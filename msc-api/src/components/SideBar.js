@@ -12,12 +12,11 @@ let SideBar = function() {
           API LIST
         </p>
         <ul className="menu-list">
+          <li className="menu-list"><Link to="/">HOME</Link></li>
           <li><Link to="/star-wars">STAR WARS</Link></li>
-            <li><Link to="/random-cat">RANDOM CAT</Link></li>
+          <li><Link to="/random-cat">RANDOM CAT</Link></li>
+          <li><Link to="/password-manager">PASSWORD MANAGER</Link></li>
         </ul>
-        <p className="menu-list">
-          <Link to="/">HOME</Link>
-        </p>
       </aside>
     </div>
   )
