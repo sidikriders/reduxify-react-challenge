@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css'
 
 // import logo from '../logo.svg'
 import { getPasswordInitiate, deletePasswordGo } from '../actions'
@@ -72,11 +74,22 @@ let mapStateToProps = (state) => {
   }
 }
 
+let submit = (fung) => {
+  confirmAlert({
+    title: 'Confirm to submit',                        // Title dialog
+    message: 'Are you sure to do this.',               // Message dialog
+    childrenElement: () => <div>Custom UI</div>,       // Custom UI or Component
+    confirmLabel: 'Confirm',                           // Text button confirm
+    cancelLabel: 'Cancel',                             // Text button cancel
+    onConfirm: () => fung()
+  })
+};
+
 let mapDispatchToProps = (dispatch) => {
   return {
     getInitiate: () => dispatch(getPasswordInitiate()),
     deletePassword: (id) => {
-      dispatch(deletePasswordGo(id))
+      submit(() => dispatch(deletePasswordGo(id)))
     }
   }
 }

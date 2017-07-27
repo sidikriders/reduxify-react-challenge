@@ -1,7 +1,6 @@
 import Axios from 'axios'
 import Chance from 'chance'
 
-
 export const getStarWars = () => {
   let angkaAcak = Math.floor(Math.random() * 87)
   return {
