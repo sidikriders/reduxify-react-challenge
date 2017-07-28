@@ -29,14 +29,23 @@ const newPasMan = (props) => {
                 <label className="label">
                   Password
                 </label>
-                <input className="input" type="text" placeholder="Password" onChange={(e) => props.validatePassword(e.target.value)} id="newPassword"/>
+                <input className={props.validatePasswordState.class} type="text" placeholder="Password" onChange={(e) => props.validatePassword(e.target.value)} id="newPassword"/>
+                { props.validatePasswordState.msg === "This password is good" ?
+                <p className="help is-success">{props.validatePasswordState.msg} <span className="icon is-small"><i className="fa fa-thumbs-up"></i></span></p> :
+                <p className="help is-danger">{props.validatePasswordState.msg}</p> }
               </div>
               <div className="field" style={{textAlign: "left"}}>
-                <Link to="/password-manager"><p className="button is-success" onClick={() => props.newPassKuy({
-                  url: document.getElementById("newURL").value,
-                  username: document.getElementById("newUsername").value,
-                  password: document.getElementById("newPassword").value
-                })}>Submit</p></Link>
+                {
+                  props.validatePasswordState.msg === "This password is good" ?
+                  <Link to="/password-manager"><p className="button is-success" onClick={() => {
+                    props.newPassKuy({
+                      url: document.getElementById("newURL").value,
+                      username: document.getElementById("newUsername").value,
+                      password: document.getElementById("newPassword").value
+                    })
+                  }}>Submit</p></Link> :
+                  <p className="button is-success" disabled>Submit</p>
+                }
               </div>
             </form>
           </div>
@@ -47,7 +56,7 @@ const newPasMan = (props) => {
 
 let mapStateToProps = (state) => {
   return {
-    Passwords: state.getPassword
+    validatePasswordState: state.passwordState.validatePassword
   }
 }
 

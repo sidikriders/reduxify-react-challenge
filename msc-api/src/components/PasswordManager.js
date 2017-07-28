@@ -69,8 +69,9 @@ const PasMan = (props) => {
 }
 
 let mapStateToProps = (state) => {
+  console.log(state);
   return {
-    Passwords: state.passwordList
+    Passwords: state.passwordState.passwordList
   }
 }
 

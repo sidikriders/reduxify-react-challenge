@@ -7,5 +7,5 @@ import passwordReducer from "./PasswordReducer"
 export default combineReducers({
   getStarWars: starWarsReducer,
   getCat: randomCatReducer,
-  passwordList: passwordReducer
+  passwordState: passwordReducer
 })
