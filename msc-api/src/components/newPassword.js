@@ -63,7 +63,9 @@ let mapStateToProps = (state) => {
 let mapDispatchToProps = (dispatch) => {
   return {
     newPassKuy: (obj) => {
-      dispatch(postPassword(obj))
+      if (obj.url !== "" || obj.username !== "") {
+        dispatch(postPassword(obj))
+      }
     },
     validatePassword: (val) => {
       dispatch(validatePassword(val))
