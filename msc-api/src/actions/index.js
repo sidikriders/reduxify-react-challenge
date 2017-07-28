@@ -104,3 +104,24 @@ export const searchPassword = (str) => {
     }
   }
 }
+
+export const editPasswordInitiate = (obj) => {
+  return {
+    type: "EDIT_PASSWORD_INITIATE",
+    payload: obj
+  }
+}
+
+export const updatePassword = (obj) => {
+  return function(dispatch) {
+    Axios.put('http://localhost:3000/password/'+obj.id,
+    {...obj, "updatedAt": date_converter()})
+    .then(function(responze) {
+      dispatch(getPasswordInitiate())
+    })
+    .catch(function(err) {
+      console.log(err)
+      alert('Error');
+    })
+  }
+}

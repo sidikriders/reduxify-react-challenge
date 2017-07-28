@@ -12,6 +12,7 @@ import StarWars from './components/StarWars'
 import RandomCat from './components/RandomCat'
 import PasswordManager from './components/PasswordManager'
 import newPassword from './components/newPassword'
+import editPassword from './components/editPassword'
 
 class App extends Component {
   render() {
@@ -39,8 +40,9 @@ class App extends Component {
                 <Route exact path="/" component={Home}/>
                 <Route path="/star-wars" component={StarWars}/>
                 <Route path="/random-cat" component={RandomCat}/>
-                <Route path="/password-manager" component={PasswordManager}/>
+                <Route exact path="/password-manager" component={PasswordManager}/>
                 <Route path="/new-password" component={newPassword}/>
+                <Route path="/password-manager/:id" component={editPassword}/>
               </div>
             </div>
           </div>

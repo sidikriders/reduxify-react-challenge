@@ -5,7 +5,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
 // import logo from '../logo.svg'
-import { getPasswordInitiate, deletePasswordGo, searchPassword } from '../actions'
+import { getPasswordInitiate, deletePasswordGo, searchPassword, editPasswordInitiate } from '../actions'
 
 const PasMan = (props) => {
   if (props.Passwords === "") {
@@ -50,9 +50,11 @@ const PasMan = (props) => {
                     <td>{x.createdAt}</td>
                     <td>{x.updatedAt}</td>
                     <td>
-                      <div className="button is-info" style={{transform: "scale(0.7)"}} onClick={() => props.editPassword(x.id)}>
+                      <Link to={'/password-manager/'+x.id}><div className="button is-info" style={{transform: "scale(0.7)"}}
+                        // onClick={() => props.editPassword(x)}
+                        >
                         <span className="icon"><i className="fa fa-pencil"></i></span>
-                      </div>
+                      </div></Link>
                       <div className="button is-warning" style={{transform: "scale(0.7)"}} onClick={() => props.deletePassword(x.id)}>
                         <span className="icon"><i className="fa fa-trash"></i></span>
                       </div>
@@ -94,7 +96,8 @@ let mapDispatchToProps = (dispatch) => {
     },
     searchPassword: (e) => {
       dispatch(searchPassword(e));
-    }
+    },
+    editPassword: (obj) => dispatch(editPasswordInitiate(obj))
   }
 }
 
