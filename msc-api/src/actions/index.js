@@ -59,40 +59,35 @@ export const deletePasswordGo = (id) => {
 }
 
 export const validatePassword = (val) => {
-  if (val.length < 8) {
-    return {
-      type: "VALIDATE_PASSWORD",
-      payload: {
-        class: "input is-danger",
-        msg: "Password must contain at least 8 characters"
-      }
+
+  let obj = {
+    type: "VALIDATE_PASSWORD",
+    payload: {
+      class: "input",
+      msg: ""
     }
-  } else if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/.test(val) === false) { // Regex Special Character
-    if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*)[A-Za-z\d$]{8,}$/.test(val) === false) { // Regex harus ada angka dan huruf
-      return {
-        type: "VALIDATE_PASSWORD",
-        payload: {
-          class: "input is-danger",
-          msg: "Password must consist of letter & number"
-        }
-      }
-    } else {
-      return {
-        type: "VALIDATE_PASSWORD",
-        payload: {
-          class: "input is-danger",
-          msg: "Password must contain 1 special character"
-        }
-      }
-    }
+  }
+
+  if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/.test(val)) { // RegexSpecialCharacter + Number + Upper and Lower case character
+    obj.payload.class = "input is-success"
+    obj.payload.msg = "This password is good"
+    return obj
+  } else if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&$]{8,}$/.test(val)){ // RegexSpecialCharacter + Number
+    obj.payload.class = "input is-danger"
+    obj.payload.msg = "Password must consist of Uppercase and Lowercase Character"
+    return obj
+  } else if (/^(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}/.test(val)) { // RegexSpecialCharacter
+    obj.payload.class = "input is-danger"
+    obj.payload.msg = "Password must consist of letter & number"
+    return obj
+  } else if ( val.length > 8) {
+    obj.payload.class = "input is-danger"
+    obj.payload.msg = "Password must contain at least 1 special character"
+    return obj
   } else {
-    return {
-      type: "VALIDATE_PASSWORD",
-      payload: {
-        class: "input is-success",
-        msg: 'This password is good'
-      }
-    }
+    obj.payload.class = "input is-danger"
+    obj.payload.msg = "Password must contain at least 8 characters"
+    return obj
   }
 }
 
