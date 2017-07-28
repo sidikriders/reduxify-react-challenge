@@ -77,7 +77,6 @@ let mapDispatchToProps = (dispatch) => {
   return {
     getInitiate: () => dispatch(getPasswordInitiate()),
     updatePassKuy: (obj) => {
-      console.log(obj);
       dispatch(updatePassword(obj))
     },
     validatePassword: (val) => {

@@ -20,8 +20,6 @@ export default (state=initialState, action) => {
       })}
     case "VALIDATE_PASSWORD":
       return {...state, validatePassword: action.payload}
-    case "EDIT_PASSWORD_INITIATE":
-      return {...state, passwordToEdit: action.payload}
     default:
       return state
   }
